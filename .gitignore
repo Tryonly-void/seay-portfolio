@@ -6,6 +6,7 @@ dist/
 
 # Env
 .env
+.env.example
 
 # PocketBase volumes (if you ever mount locally)
 pb/pb_data/
