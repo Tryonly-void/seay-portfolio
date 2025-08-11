@@ -1,0 +1,17 @@
+# Node
+node_modules/
+dist/
+.vite/
+*.log
+
+# Env
+.env
+
+# PocketBase volumes (if you ever mount locally)
+pb/pb_data/
+pb/pb_public/
+
+# OS/Editor
+.DS_Store
+Thumbs.db
+.vscode/
