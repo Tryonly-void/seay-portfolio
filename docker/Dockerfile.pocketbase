@@ -1,0 +1,13 @@
+FROM alpine:3.20
+ARG PB_VERSION=0.22.15
+RUN apk add --no-cache wget unzip ca-certificates tzdata \
+  && mkdir -p /pb \
+  && wget -O /pb/pb.zip https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSION}/pocketbase_${PB_VERSION}_linux_amd64.zip \
+  && unzip /pb/pb.zip -d /pb \
+  && rm /pb/pb.zip \
+  && adduser -D -H -s /sbin/nologin pbuser \
+  && chown -R pbuser:pbuser /pb
+USER pbuser
+WORKDIR /pb
+EXPOSE 8090
+CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8090", "--dir=/pb"]

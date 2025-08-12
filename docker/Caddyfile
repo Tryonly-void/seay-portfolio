@@ -1,0 +1,19 @@
+{
+  email you@seay.ch
+}
+
+seay.ch {
+  encode gzip
+  @api path /api/*
+  handle @api {
+    reverse_proxy api:3000
+  }
+  handle {
+    reverse_proxy web:80
+  }
+}
+
+pb.seay.ch {
+  encode gzip
+  reverse_proxy pocketbase:8090
+}
